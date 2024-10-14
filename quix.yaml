@@ -24,7 +24,7 @@ deployments:
         inputType: FreeText
         description: List of cryptocurrencies to get trades from Kraken
         required: true
-        value: '["BTC/USD","ETH/USD"]'
+        value: '["BTC/EUR","ETH/EUR"]'
       - name: LIVE_OR_HISTORICAL
         inputType: FreeText
         description: Is it "live" or "historical"
