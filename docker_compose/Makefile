@@ -1,0 +1,20 @@
+
+start-redpanda:
+	docker compose -f redpanda.yml up -d
+
+stop-redpanda:
+	docker compose -f redpanda.yml down
+
+start-feature-pipeline:
+	docker compose -f feature_pipeline.yml up --build -d
+
+stop-feature-pipeline:
+	docker compose -f feature_pipeline.yml down
+
+start-historical-pipeline:
+	#docker compose -f historical_pipeline.yml up -d
+	docker compose -f historical_pipeline.yml up --build -d
+
+stop-historical-pipeline:
+	docker compose -f historical_pipeline.yml down
+

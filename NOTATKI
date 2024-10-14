@@ -1,0 +1,8 @@
+2024-10-03
+1. w price_predictor:
+- przekleić preprocessing (część zmiennych jest usunięta)
+- dodać plik api.py
+- sprawdzić config - coś tam się zmieniło
+- training.py przekleić i wytrenować nowy model
+- przetestować pobieranie danych z live feature store
+
