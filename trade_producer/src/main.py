@@ -30,6 +30,7 @@ def produce_trades(
     """
     # Create an Application instance with Kafka config
     app = Application(broker_address = kafka_broker_address)
+    logger.info(f"Connected to Kafka broker at {kafka_broker_address}")
 
     # Define a topic "my_topic" with JSON serialization
     topic = app.topic(
@@ -40,13 +41,14 @@ def produce_trades(
             replication_factor = 1
         )
     )
+    logger.info(f"Created Kafka topic {kafka_topic}")
 
     # Create a Producer instance
     with app.get_producer() as producer:
 
         while not trade_data_source.is_done():
             # while trade_data_source.is_done() is False:
-
+            logger.info("Fetching trades from the data source")
             trades: List[Trade] = trade_data_source.get_trades()
 
             # breakpoint()
@@ -79,6 +81,7 @@ if __name__ == "__main__":
 
     if config.live_or_historical == 'live':
         from trade_data_source.kraken_websocket_api import KrakenWebsocketAPI
+        logger.info(f"Fetching live data from Kraken Websocket API")
 
         kraken_api = KrakenWebsocketAPI(product_ids = config.product_ids)
 

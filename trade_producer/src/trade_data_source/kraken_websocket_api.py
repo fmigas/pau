@@ -26,7 +26,8 @@ class KrakenWebsocketAPI(TradeSource):
 
         # establish connection to the Kraken websocket API
         self._ws = create_connection(self.URL)
-        logger.debug('Connection established')
+        logger.debug('Connection with KrakenWebsocket established')
+        logger.debug(f"Subscribing to trades for {product_ids}")
 
         # subscribe to the trades for the given `product_id`
         self._subscribe(product_ids)
