@@ -1,4 +1,3 @@
-
 from typing import List
 
 from loguru import logger
@@ -7,7 +6,6 @@ from quixstreams.models import TopicConfig
 
 from trade_data_source.base import TradeSource
 from trade_data_source.trade import Trade
-
 
 
 def produce_trades(
@@ -29,7 +27,7 @@ def produce_trades(
         None
     """
     # Create an Application instance with Kafka config
-    app = Application()
+    app = Application(broker_address = kafka_broker_address)
     logger.info(f"Connected to Kafka broker at {kafka_broker_address}")
 
     # Define a topic "my_topic" with JSON serialization
@@ -81,6 +79,7 @@ if __name__ == "__main__":
 
     if config.live_or_historical == 'live':
         from trade_data_source.kraken_websocket_api import KrakenWebsocketAPI
+
         logger.info(f"Fetching live data from Kraken Websocket API")
 
         kraken_api = KrakenWebsocketAPI(product_ids = config.product_ids)
