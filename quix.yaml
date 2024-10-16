@@ -37,4 +37,8 @@ deployments:
         value: 30
 
 # This section describes the Topics of the data pipeline
-topics: []
+topics:
+  - name: trade
+    configuration:
+      partitions: 2
+      replicationFactor: 1
