@@ -29,7 +29,7 @@ def produce_trades(
         None
     """
     # Create an Application instance with Kafka config
-    app = Application(broker_address = kafka_broker_address)
+    app = Application()
     logger.info(f"Connected to Kafka broker at {kafka_broker_address}")
 
     # Define a topic "my_topic" with JSON serialization
