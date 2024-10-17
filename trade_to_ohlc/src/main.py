@@ -78,15 +78,16 @@ def transform_trade_to_ohlcv(
     if read_from_beginning:
         logger.info("Reading from the beginning of the topic")
         app = Application(
-            broker_address = kafka_broker_address,
-            consumer_group = kafka_consumer_group,
+            # broker_address = kafka_broker_address,
+            # broker_address = kafka_broker_address,
+            # consumer_group = kafka_consumer_group,
             auto_offset_reset = 'earliest',
         )
 
     else:
         app = Application(
-            broker_address = kafka_broker_address,
-            consumer_group = kafka_consumer_group,
+            # broker_address = kafka_broker_address,
+            # consumer_group = kafka_consumer_group,
         )
 
     # app.clear_state()
@@ -122,7 +123,7 @@ def transform_trade_to_ohlcv(
     sdf = sdf[['product_id', 'timestamp_ms', 'open', 'high', 'low', 'close', 'volume']]
 
     # print the output to the console
-    sdf.update(logger.debug)
+    sdf = sdf.update(logger.debug)
 
     # push these message to the output topic
     sdf = sdf.to_topic(output_topic)
