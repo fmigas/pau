@@ -79,8 +79,9 @@ def transform_trade_to_ohlcv(
         logger.info("Reading from the beginning of the topic")
         app = Application(
             # broker_address = kafka_broker_address,
-            # broker_address = kafka_broker_address,
+            broker_address = None,
             # consumer_group = kafka_consumer_group,
+            consumer_group = None,
             auto_offset_reset = 'earliest',
         )
 
@@ -88,6 +89,8 @@ def transform_trade_to_ohlcv(
         app = Application(
             # broker_address = kafka_broker_address,
             # consumer_group = kafka_consumer_group,
+            broker_address = None,
+            consumer_group = None,
         )
 
     # app.clear_state()
