@@ -58,7 +58,7 @@ deployments:
         inputType: FreeText
         description: ''
         required: true
-        value: trade_to_ohlcv_consumer_group
+        value: trade_to_ohlcv_consumer_group_2
       - name: OHLCV_WINDOW_SECONDS
         inputType: FreeText
         description: ''
