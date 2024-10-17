@@ -93,6 +93,38 @@ deployments:
         description: ''
         required: true
         value: 60
+  - name: trade_to_ohlc 3
+    application: trade_to_ohlc
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    state:
+      enabled: true
+      size: 1
+    variables:
+      - name: KAFKA_INPUT_TOPIC
+        inputType: InputTopic
+        description: Trades come in
+        required: true
+        value: trade
+      - name: KAFKA_OUTPUT_TOPIC
+        inputType: OutputTopic
+        description: Where candles go
+        required: true
+        value: ohlcv
+      - name: KAFKA_CONSUMER_GROUP
+        inputType: FreeText
+        description: ''
+        required: true
+        value: trade_to_ohlcv_consumer_group
+      - name: OHLCV_WINDOW_SECONDS
+        inputType: FreeText
+        description: ''
+        required: true
+        value: 60
 
 # This section describes the Topics of the data pipeline
 topics:
