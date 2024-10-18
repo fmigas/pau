@@ -78,11 +78,6 @@ deployments:
         description: ''
         required: true
         value: ohlcv
-      - name: KAFKA_CONSUMER_GROUP
-        inputType: FreeText
-        description: ''
-        required: true
-        value: consumer_group_ohlcv_to_feature_store
       - name: FEATURE_GROUP_NAME
         inputType: FreeText
         description: ''
@@ -103,11 +98,6 @@ deployments:
         description: ''
         required: true
         value: timestamp_ms
-      - name: START_OFFLINE_MATERIALIZATION
-        inputType: FreeText
-        description: ''
-        required: false
-        value: False
 
 # This section describes the Topics of the data pipeline
 topics:
