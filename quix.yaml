@@ -64,6 +64,15 @@ deployments:
         description: ''
         required: true
         value: 60
+  - name: topic_to_feature_store
+    application: topic_to_feature_store
+    version: latest
+    deploymentType: Service
+    resources:
+      cpu: 200
+      memory: 500
+      replicas: 1
+    variables: []
 
 # This section describes the Topics of the data pipeline
 topics:
