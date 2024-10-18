@@ -39,11 +39,13 @@ def topic_to_feature_store(
 
     with app.get_consumer() as consumer:
         consumer.subscribe(topics = [kafka_input_topic])
+        logger.debug(f'Subscribed to topic {kafka_input_topic}')
 
         # If reading from beginning, perform a dummy poll and seek to beginning
 
         while True:
             msg = consumer.poll(0.1)
+            logger.debug(f'Polled message: {msg}')
 
             if msg is None:
                 continue
