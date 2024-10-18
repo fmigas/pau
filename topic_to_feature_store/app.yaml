@@ -31,6 +31,11 @@ variables:
     description: ''
     defaultValue: consumer_group_ohlcv_to_feature_store_2
     required: true
+  - name: START_OFFLINE_MATERIALIZATION
+    inputType: FreeText
+    description: ''
+    defaultValue: False
+    required: false
 dockerfile: Dockerfile
 runEntryPoint: src/main.py
 defaultFile: src/main.py
