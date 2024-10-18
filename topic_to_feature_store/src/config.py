@@ -6,7 +6,7 @@ from typing import List, Optional
 class AppConfig(BaseSettings):
     kafka_broker_address: Optional[str] = None
     kafka_input_topic: str
-    kafka_consumer_group: str
+    kafka_consumer_group: Optional[str] = None
 
     feature_group_name: str
     feature_group_version: int
