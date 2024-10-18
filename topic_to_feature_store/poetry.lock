@@ -3009,16 +3009,16 @@ cffi = {version = "*", markers = "implementation_name == \"pypy\""}
 
 [[package]]
 name = "quixstreams"
-version = "2.11.0"
+version = "3.0.0"
 description = "Python library for building stream processing applications with Apache Kafka"
 optional = false
-python-versions = "<4,>=3.8"
+python-versions = "<4,>=3.9"
 files = [
-    {file = "quixstreams-2.11.0-py3-none-any.whl", hash = "sha256:a3ec70ea2e8f7f582830de94f883007f2ed4dd002ea5d3ff9aab97332a3d60ca"},
+    {file = "quixstreams-3.0.0-py3-none-any.whl", hash = "sha256:f3d3bf384982920cd81b1dd06fe302c421f8be24305802b7f782d800e38e34c5"},
 ]
 
 [package.dependencies]
-confluent-kafka = ">=2.2,<2.6"
+confluent-kafka = ">=2.2,<2.5"
 jsonschema = ">=4.3.0"
 orjson = ">=3.9,<4"
 pydantic = ">=2.7,<2.10"
@@ -3804,4 +3804,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "3.12.2"
-content-hash = "d0f789405e57f91071cd7a2575421c746c535b0fd78fa19dd656ce12b3c5900e"
+content-hash = "d43217a973bf5a68e7b65ec39eccf4f9a7e3e4aaf163fdf4c2d661380597b4b5"

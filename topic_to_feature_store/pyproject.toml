@@ -10,7 +10,7 @@ python = "3.12.2"
 loguru = "^0.7.2"
 hopsworks = "^3.7.0"
 hops = "^3.8.0.0"
-quixstreams = "^2.11.0"
+quixstreams = "^3.0.0"
 
 
 [build-system]

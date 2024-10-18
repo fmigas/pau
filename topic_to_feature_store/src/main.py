@@ -2,6 +2,7 @@ from typing import List
 from quixstreams import Application
 from loguru import logger
 from hopsworks_api import push_value_to_feature_group
+import json
 
 
 def topic_to_feature_store(
@@ -14,40 +15,32 @@ def topic_to_feature_store(
         feature_group_event_time: str,
         start_offline_materialization: bool,
         batch_size: int,
+        read_from_beginning: bool = False  # New parameter
 ):
-    """
-    Reads incoming messages from the given `kafka_input_topic`, and pushes them to the
-    given `feature_group_name` in the Feature Store.
 
-    Args:
-        kafka_broker_address (str): The address of the Kafka broker
-        kafka_input_topic (str): The Kafka topic to read the messages from
-        kafka_consumer_group (str): The Kafka consumer group
-        feature_group_name (str): The name of the Feature Group
-        feature_group_version (int): The version of the Feature Group
-        feature_group_primary_keys (List[str]): The primary key of the Feature Group
-        feature_group_event_time (str): The event time of the Feature Group
-        start_offline_materialization (bool): Whether to start the offline
-            materialization or not when we save the `value` to the feature group
-        batch_size (int): The number of messages to accumulate in-memory before pushing
-            to the Feature Store
+    logger.debug(f'Kafka broker address: {kafka_broker_address}')
+    logger.debug(f'Kafka input topic: {kafka_input_topic}')
+    logger.debug(f'Kafka consumer group: {kafka_consumer_group}')
+    logger.debug(f'Reading from beginning: {read_from_beginning}')
 
-    Returns:
-        None
-    """
-    # Configure an Application.
-    # The config params will be used for the Consumer instance too.
-    app = Application(
-        broker_address = kafka_broker_address,
-        consumer_group = kafka_consumer_group,
-    )
+    if read_from_beginning:
+        app = Application(
+            broker_address = kafka_broker_address,
+            consumer_group = kafka_consumer_group,
+            auto_offset_reset = 'earliest',  # Add this line
+        )
+    else:
+        app = Application(
+            broker_address = kafka_broker_address,
+            consumer_group = kafka_consumer_group,
+        )
 
     batch = []
 
-    # Create a consumer and start a polling loop
     with app.get_consumer() as consumer:
-
         consumer.subscribe(topics = [kafka_input_topic])
+
+        # If reading from beginning, perform a dummy poll and seek to beginning
 
         while True:
             msg = consumer.poll(0.1)
@@ -59,20 +52,14 @@ def topic_to_feature_store(
                 continue
 
             value = msg.value()
-
-            # decode the message bytes into a dictionary
-            import json
             value = json.loads(value.decode('utf-8'))
-
-            # Append the message to the batch
             batch.append(value)
 
-            # If the batch is not full yet, continue polling
             if len(batch) < batch_size:
-                logger.debug(f'Batch has size {len(batch)} < {batch_size}...')
+                logger.debug(f'Batch has size {len(batch)} < {batch_size}')
                 continue
 
-            logger.debug(f'Batch has size {len(batch)} >= {batch_size}... Pushing data to Feature Store')
+            logger.debug(f'Batch has size {len(batch)} >= {batch_size} Pushing data to Feature Store')
             push_value_to_feature_group(
                 batch,
                 feature_group_name,
@@ -81,15 +68,7 @@ def topic_to_feature_store(
                 feature_group_event_time,
                 start_offline_materialization,
             )
-
-            # Clear the batch
             batch = []
-
-            # Store the offset of the processed message on the Consumer
-            # for the auto-commit mechanism.
-            # It will send it to Kafka in the background.
-            # Storing offset only after the message is processed enables at-least-once delivery
-            # guarantees.
             consumer.store_offsets(message = msg)
 
 
@@ -106,4 +85,5 @@ if __name__ == "__main__":
         feature_group_event_time = config.feature_group_event_time,
         start_offline_materialization = config.start_offline_materialization,
         batch_size = config.batch_size,
+        read_from_beginning = config.read_from_beginning,
     )

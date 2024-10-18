@@ -1,10 +1,10 @@
 from typing import List, Optional
 
 from pydantic_settings import BaseSettings
-
+from typing import List, Optional
 
 class AppConfig(BaseSettings):
-    kafka_broker_address: str
+    kafka_broker_address: Optional[str] = None
     kafka_input_topic: str
     kafka_consumer_group: str
 

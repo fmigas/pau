@@ -19,6 +19,6 @@ COPY . /app
 
 # Run the application
 #CMD ["poetry", "run", "python", "src/main.py"]
-CMD ["python3", "src/main_new.py"]
+CMD ["python3", "src/main.py"]
 
 
