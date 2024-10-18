@@ -8,10 +8,10 @@ class AppConfig(BaseSettings):
     kafka_output_topic: str
     kafka_consumer_group: str
     ohlcv_window_seconds: int
-    read_from_beginning: bool = False
+    read_from_beginning: bool = True
 
-    class Config:
-        env_file = ".env"
+    # class Config:
+        # env_file = ".env"
 
 
 config = AppConfig()
