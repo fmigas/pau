@@ -26,6 +26,11 @@ variables:
     description: ''
     defaultValue: timestamp_ms
     required: true
+  - name: KAFKA_CONSUMER_GROUP
+    inputType: FreeText
+    description: ''
+    defaultValue: ''
+    required: false
 dockerfile: Dockerfile
 runEntryPoint: src/main.py
 defaultFile: src/main.py
