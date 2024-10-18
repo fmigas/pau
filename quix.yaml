@@ -6,13 +6,13 @@ metadata:
 
 # This section describes the Deployments of the data pipeline
 deployments:
-  - name: trade_producer
+  - name: trade_producer 2
     application: trade_producer
     version: latest
     deploymentType: Service
     resources:
-      cpu: 100
-      memory: 300
+      cpu: 200
+      memory: 500
       replicas: 1
     variables:
       - name: KAFKA_TOPIC
@@ -35,7 +35,7 @@ deployments:
         description: ''
         required: false
         value: 30
-  - name: trade_to_ohlc
+  - name: trade_to_ohlc 2
     application: trade_to_ohlc
     version: latest
     deploymentType: Service
