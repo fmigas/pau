@@ -102,7 +102,7 @@ deployments:
         inputType: FreeText
         description: ''
         required: true
-        value: consumer_group_ohlcv_to_feature_store_2
+        value: consumer_group_ohlcv_to_feature_store_3
       - name: START_OFFLINE_MATERIALIZATION
         inputType: FreeText
         description: ''
