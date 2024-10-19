@@ -47,7 +47,7 @@ def topic_to_feature_store(
 
         while True:
             msg = consumer.poll(0.1)
-            logger.debug(f'Polled message: {msg}')
+            # logger.debug(f'Polled message: {msg}')
 
             if msg is None:
                 continue
