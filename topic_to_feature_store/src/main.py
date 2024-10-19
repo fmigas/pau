@@ -35,10 +35,12 @@ def topic_to_feature_store(
             consumer_group = kafka_consumer_group,
         )
 
+    input_topic = app.topic(kafka_input_topic)
+
     batch = []
 
     with app.get_consumer() as consumer:
-        consumer.subscribe(topics = [kafka_input_topic])
+        consumer.subscribe(topics = [input_topic.name])
         logger.debug(f'Subscribed to topic {kafka_input_topic}')
 
         # If reading from beginning, perform a dummy poll and seek to beginning
