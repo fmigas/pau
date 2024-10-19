@@ -43,7 +43,7 @@ variables:
     required: true
   - name: HOPSWORKS_API_KEY
     inputType: Secret
-    description: ''
+    description: 'KEY'
     defaultValue: HOPSWORKS_API_KEY
     required: true
 dockerfile: Dockerfile
