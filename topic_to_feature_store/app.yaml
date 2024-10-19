@@ -38,7 +38,7 @@ variables:
     required: false
   - name: HOPSWORKS_PROJECT_NAME
     inputType: Secret
-    description: ''
+    description: 'Key'
     defaultValue: HOPSWORKS_PROJECT_NAME
     required: true
   - name: HOPSWORKS_API_KEY
