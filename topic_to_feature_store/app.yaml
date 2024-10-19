@@ -6,11 +6,6 @@ variables:
     description: ''
     defaultValue: ohlcv
     required: true
-  - name: KAFKA_CONSUMER_GROUP
-    inputType: FreeText
-    description: ''
-    defaultValue: consumer_group_ohlcv_to_feature_store
-    required: true
   - name: FEATURE_GROUP_NAME
     inputType: FreeText
     description: ''
@@ -31,11 +26,26 @@ variables:
     description: ''
     defaultValue: timestamp_ms
     required: true
+  - name: KAFKA_CONSUMER_GROUP
+    inputType: FreeText
+    description: ''
+    defaultValue: consumer_group_ohlcv_to_feature_store_2
+    required: true
   - name: START_OFFLINE_MATERIALIZATION
     inputType: FreeText
     description: ''
     defaultValue: False
     required: false
+  - name: HOPSWORKS_PROJECT_NAME
+    inputType: Secret
+    description: ''
+    defaultValue: HOPSWORKS_PROJECT_NAME
+    required: true
+  - name: HOPSWORKS_API_KEY
+    inputType: Secret
+    description: ''
+    defaultValue: HOPSWORKS_API_KEY
+    required: true
 dockerfile: Dockerfile
 runEntryPoint: src/main.py
 defaultFile: src/main.py
