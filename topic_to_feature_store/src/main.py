@@ -3,6 +3,8 @@ from quixstreams import Application
 from loguru import logger
 from hopsworks_api import push_value_to_feature_group
 import json
+
+
 # hej
 
 
@@ -18,7 +20,6 @@ def topic_to_feature_store(
         batch_size: int,
         read_from_beginning: bool = False  # New parameter
 ):
-
     logger.debug(f'Kafka broker address: {kafka_broker_address}')
     logger.debug(f'Kafka input topic: {kafka_input_topic}')
     logger.debug(f'Kafka consumer group: {kafka_consumer_group}')
@@ -65,16 +66,19 @@ def topic_to_feature_store(
                 continue
 
             logger.debug(f'Batch has size {len(batch)} >= {batch_size} Pushing data to Feature Store')
-            push_value_to_feature_group(
-                batch,
-                feature_group_name,
-                feature_group_version,
-                feature_group_primary_keys,
-                feature_group_event_time,
-                start_offline_materialization,
-            )
-            batch = []
-            consumer.store_offsets(message = msg)
+            try:
+                push_value_to_feature_group(
+                    batch,
+                    feature_group_name,
+                    feature_group_version,
+                    feature_group_primary_keys,
+                    feature_group_event_time,
+                    start_offline_materialization,
+                )
+                batch = []
+                consumer.store_offsets(message = msg)
+            except Exception as e:
+                logger.error(f'Error pushing data to Feature Store: {e}')
 
 
 if __name__ == "__main__":
