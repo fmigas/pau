@@ -4,6 +4,7 @@ import hopsworks
 import pandas as pd
 
 from config import hopsworks_config as config
+# hej
 
 # connect to ours Hopsworks project
 project = hopsworks.login(

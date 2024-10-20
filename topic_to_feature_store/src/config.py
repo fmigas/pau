@@ -2,6 +2,7 @@ from typing import List, Optional
 
 from pydantic_settings import BaseSettings
 from typing import List, Optional
+# hej
 
 class AppConfig(BaseSettings):
     kafka_broker_address: Optional[str] = None

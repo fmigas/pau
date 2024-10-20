@@ -16,6 +16,7 @@ COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 
 COPY . /app
+# hej
 
 # Run the application
 #CMD ["poetry", "run", "python", "src/main.py"]

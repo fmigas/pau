@@ -3,6 +3,7 @@ from quixstreams import Application
 from loguru import logger
 from hopsworks_api import push_value_to_feature_group
 import json
+# hej
 
 
 def topic_to_feature_store(
