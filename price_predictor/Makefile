@@ -5,7 +5,7 @@ prediction-dev:
 	poetry run python src/prediction.py
 
 build:
-	docker build -t price_predictor_training .
+	docker build -t price_predictor .
 
 #run: build
 #	docker run --env-file .env price_predictor_training
@@ -14,14 +14,14 @@ training: build
 	docker run \
 		--env-file .env \
 		-e TRAINING_OR_PREDICTION=training \
-		price_predictor_training
+		price_predictor
 
 api: build
 	docker run \
 		-p 8000:80 \
 		--env-file .env \
 		-e TRAINING_OR_PREDICTION=prediction \
-		price_predictor_api
+		price_predictor
 
 
 test:
