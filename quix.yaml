@@ -194,7 +194,7 @@ deployments:
         inputType: FreeText
         description: ''
         required: true
-        value: '["BTC/USD,ETH/USD"]'
+        value: '"BTC/USD,ETH/USD"'
       - name: TRAINING_OR_PREDICTION
         inputType: FreeText
         description: ''
