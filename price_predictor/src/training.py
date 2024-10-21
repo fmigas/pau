@@ -12,6 +12,7 @@ from models.current_price_baseline import CurrentPriceBaseline
 from models.xgboost_model import XGBoostModel
 from utils import hash_dataframe
 from model_registry import get_model_name
+from ohlc_data_reader import OhlcDataReader
 
 
 def train_model(
@@ -84,7 +85,6 @@ def train_model(
     # log number of minutes of data in the past I need to generate predictions
     experiment.log_parameter("last_n_minutes", last_n_minutes)
     # Load feature data from the Feature Store
-    from src.ohlc_data_reader import OhlcDataReader
 
     ohlc_data_reader = OhlcDataReader(
         ohlc_window_sec = ohlc_window_sec,
