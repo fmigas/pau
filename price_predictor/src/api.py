@@ -1,10 +1,10 @@
 from fastapi import FastAPI, HTTPException, Query
-from pydantic import BaseModel
-import joblib
+# from pydantic import BaseModel
+# import joblib
 
 from loguru import logger
 
-from src.hopsworks_api import push_value_to_feature_group
+# from hopsworks_api import push_value_to_feature_group
 from config import config
 from price_predictor import PricePredictor
 
@@ -39,9 +39,11 @@ def predict(product_id: str = Query(..., description = "The product ID to predic
                 forecast_steps = config.forecast_steps,
                 status = config.ml_model_status,
             )
+        logger.info(f"Model loaded from Comet")
 
         # extract the predictor object for this product id
         predictor = predictors[product_id]
+        logger.info(f"Predictor for product id {product_id} loaded from Comet")
 
         # the ML magic happens here
         prediction = predictor.predict()

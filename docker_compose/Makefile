@@ -18,3 +18,10 @@ start-historical-pipeline:
 stop-historical-pipeline:
 	docker compose -f historical_pipeline.yml down
 
+# check health of our production API
+check-health-prod:
+	curl -X GET https://price-predictor-824943a-fmigaszewski-pau-production.deployments.quix.io/health
+
+# make a prediction request to our production API
+predict-request-prod:
+	curl -X GET "https://price-predictor-824943a-fmigaszewski-pau-production.deployments.quix.io/predict?product_id=BTC%2FUSD"
