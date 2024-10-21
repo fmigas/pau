@@ -1,4 +1,3 @@
-
 name: price_predictor
 language: python
 variables:
@@ -40,7 +39,7 @@ variables:
   - name: PRODUCT_ID
     inputType: FreeText
     description: ''
-    defaultValue: BTC/EUR
+    defaultValue: BTC/USD
     required: true
   - name: LAST_N_DAYS
     inputType: FreeText
