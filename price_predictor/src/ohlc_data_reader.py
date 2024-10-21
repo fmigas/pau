@@ -9,7 +9,7 @@ import hopsworks
 from hsfs.feature_view import FeatureView
 from hsfs.feature_store import FeatureStore
 
-from config import HopsworksConfig, hopsworks_config
+from src.config import HopsworksConfig, hopsworks_config
 
 
 class OhlcDataReader:

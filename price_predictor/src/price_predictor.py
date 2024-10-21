@@ -3,17 +3,17 @@ import json
 import joblib
 from loguru import logger
 
-from config import (
+from src.config import (
     comet_config,
     hopsworks_config,
 )
-from model_registry import get_model_name
+from src.model_registry import get_model_name
 from src.ohlc_data_reader import OhlcDataReader
-from utils import timestamp_ms_to_human_readable_utc
+from src.utils import timestamp_ms_to_human_readable_utc
 from comet_ml.api import API
 
-from preprocessing import keep_only_numeric_columns
-from feature_engineering import add_technical_indicators_and_temporal_features
+from src.preprocessing import keep_only_numeric_columns
+from src.feature_engineering import add_technical_indicators_and_temporal_features
 
 
 class PricePrediction(BaseModel):
