@@ -5,8 +5,8 @@ from fastapi import FastAPI, HTTPException, Query
 from loguru import logger
 
 # from hopsworks_api import push_value_to_feature_group
-from config import config
-from price_predictor import PricePredictor
+from src.config import config
+from src.price_predictor import PricePredictor
 
 app = FastAPI()
 

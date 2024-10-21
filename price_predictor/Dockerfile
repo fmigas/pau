@@ -54,14 +54,21 @@ COPY . /app
 EXPOSE 80
 
 # Use an environment variable to determine which script to run
-CMD if [ "$TRAINING_OR_PREDICTION" = "training" ]; then \
-#        poetry run python src/training.py; \
+#CMD if [ "$TRAINING_OR_PREDICTION" = "training" ]; then \
+##        poetry run python src/training.py; \
+#        python3 src/training.py; \
+#    elif [ "$TRAINING_OR_PREDICTION" = "prediction" ]; then \
+##        poetry run uvicorn src.api:app --host 0.0.0.0 --port 80; \
+#        uvicorn src.api:app --host 0.0.0.0 --port 80; \
+#    else \
+#        echo "Invalid TRAINING_OR_PREDICTION. Please set TRAINING_OR_PREDICTION to 'training' or 'prediction'." && exit 1; \
+#    fi
+
+CMD ["/bin/sh", "-c", "if [ \"$TRAINING_OR_PREDICTION\" = \"training\" ]; then \
         python3 src/training.py; \
-    elif [ "$TRAINING_OR_PREDICTION" = "prediction" ]; then \
-#        poetry run uvicorn src.api:app --host 0.0.0.0 --port 80; \
+    elif [ \"$TRAINING_OR_PREDICTION\" = \"prediction\" ]; then \
         uvicorn src.api:app --host 0.0.0.0 --port 80; \
     else \
-        echo "Invalid TRAINING_OR_PREDICTION. Please set TRAINING_OR_PREDICTION to 'training' or 'prediction'." && exit 1; \
-    fi
-
+        echo \"Invalid TRAINING_OR_PREDICTION. Please set TRAINING_OR_PREDICTION to 'training' or 'prediction'.\" && exit 1; \
+    fi"]
 
