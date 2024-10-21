@@ -47,6 +47,7 @@ def predict(product_id: str = Query(..., description = "The product ID to predic
 
         # the ML magic happens here
         prediction = predictor.predict()
+        logger.info(f"Prediction for product id {product_id} done")
 
         return {"prediction": prediction.to_json()}
         # return prediction.to_json()
