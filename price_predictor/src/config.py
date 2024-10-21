@@ -14,7 +14,7 @@ class AppConfig(BaseSettings):
     n_splits: int
     last_n_minutes: int
     ml_model_status: str
-    api_supported_product_ids: list[str]
+    api_supported_product_ids: str
 
     class Config:
         env_file = '.env'
