@@ -14,16 +14,10 @@ class AppConfig(BaseSettings):
     n_splits: int
     last_n_minutes: int
     ml_model_status: str
-    api_supported_product_ids: str
+    api_supported_product_ids: list[str]
 
     class Config:
         env_file = '.env'
-
-        # @classmethod
-        # def parse_env_var(cls, field_name: str, raw_val: str):
-        #     if field_name == 'api_supported_product_ids':
-        #         return raw_val.split(',')
-        #     return raw_val
 
 
 class HopsworksConfig(BaseSettings):

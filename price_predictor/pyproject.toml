@@ -17,6 +17,21 @@ scikit-learn = "^1.5.2"
 optuna = "^4.0.0"
 fastapi = "^0.115.0"
 uvicorn = "^0.31.1"
+ta-lib = "^0.4.32"
+
+#[tool.poetry.dependencies]
+#python = ">=3.10,<3.13"
+#hopsworks = "^3.7.0"
+#pydantic-settings = "^2.5.2"
+#loguru = "^0.7.2"
+#scikit-learn = "^1.5.2"
+#comet-ml = "^3.46.0"
+#xgboost = "^2.1.1"
+#ta-lib = "^0.4.32"
+#optuna = "^4.0.0"
+#fastapi = "^0.115.0"
+#uvicorn = "^0.31.0"
+
 
 
 [build-system]

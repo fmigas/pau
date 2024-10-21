@@ -1,0 +1,102 @@
+
+name: price_predictor
+language: python
+variables:
+  - name: FEATURE_VIEW_NAME
+    inputType: FreeText
+    description: ''
+    defaultValue: ohlcv_feature_view
+    required: true
+  - name: FEATURE_VIEW_VERSION
+    inputType: FreeText
+    description: ''
+    defaultValue: 1
+    required: true
+  - name: OHLC_WINDOW_SEC
+    inputType: FreeText
+    description: ''
+    defaultValue: 60
+    required: true
+  - name: FORECAST_STEPS
+    inputType: FreeText
+    description: ''
+    defaultValue: 5
+    required: true
+  - name: ML_MODEL_STATUS
+    inputType: FreeText
+    description: ''
+    defaultValue: production
+    required: true
+  - name: FEATURE_GROUP_NAME
+    inputType: FreeText
+    description: ''
+    defaultValue: ohlcv_feature_group
+    required: true
+  - name: FEATURE_GROUP_VERSION
+    inputType: FreeText
+    description: ''
+    defaultValue: 1
+    required: true
+  - name: PRODUCT_ID
+    inputType: FreeText
+    description: ''
+    defaultValue: BTC/EUR
+    required: true
+  - name: LAST_N_DAYS
+    inputType: FreeText
+    description: ''
+    defaultValue: 120
+    required: true
+  - name: N_SEARCH_TRIALS
+    inputType: FreeText
+    description: ''
+    defaultValue: 10
+    required: true
+  - name: N_SPLITS
+    inputType: FreeText
+    description: ''
+    defaultValue: 2
+    required: true
+  - name: LAST_N_MINUTES
+    inputType: FreeText
+    description: ''
+    defaultValue: 30
+    required: true
+  - name: API_SUPPORTED_PRODUCT_IDS
+    inputType: FreeText
+    description: ''
+    defaultValue: '["BTC/USD,ETH/USD"]'
+    required: true
+  - name: TRAINING_OR_PREDICTION
+    inputType: FreeText
+    description: ''
+    defaultValue: training
+    required: true
+  - name: HOPSWORKS_PROJECT_NAME
+    inputType: Secret
+    description: ''
+    defaultValue: HOPSWORKS_PROJECT_NAME
+    required: true
+  - name: HOPSWORKS_API_KEY
+    inputType: Secret
+    description: ''
+    defaultValue: HOPSWORKS_API_KEY
+    required: true
+  - name: COMET_PROJECT_NAME
+    inputType: Secret
+    description: ''
+    defaultValue: COMET_PROJECT_NAME
+    required: true
+  - name: COMET_API_KEY
+    inputType: Secret
+    description: ''
+    defaultValue: COMET_API_KEY
+    required: true
+  - name: COMET_WORKSPACE
+    inputType: Secret
+    description: ''
+    defaultValue: COMET_WORKSPACE
+    required: true
+dockerfile: Dockerfile
+runEntryPoint: src/training.py
+defaultFile: src/training.py
