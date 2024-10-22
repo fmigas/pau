@@ -16,7 +16,7 @@ training: build
 		-e TRAINING_OR_PREDICTION=training \
 		price_predictor
 
-api: build
+api:
 	docker run \
 		-p 8000:80 \
 		--env-file .env \
@@ -26,3 +26,6 @@ api: build
 
 test:
 	poetry run python tests/hopsworks_test.py
+
+request:
+	curl "http://0.0.0.0:80/?product_id=BTC%2FUSD"

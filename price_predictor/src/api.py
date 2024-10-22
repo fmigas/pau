@@ -30,6 +30,7 @@ def predict(product_id: str = Query(..., description = "The product ID to predic
 
         # if we don't have the predictor for this product id, we create it
         if product_id not in predictors:
+            logger.info(f"Loading model for product id {product_id} from Comet")
             predictors[product_id] = PricePredictor.from_model_registry(
                 product_id = product_id,
 
