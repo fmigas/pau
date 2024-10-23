@@ -149,7 +149,7 @@ deployments:
         inputType: FreeText
         description: ''
         required: true
-        value: 5
+        value: 1
       - name: ML_MODEL_STATUS
         inputType: FreeText
         description: ''
