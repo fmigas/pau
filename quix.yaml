@@ -12,7 +12,7 @@ deployments:
     deploymentType: Service
     resources:
       cpu: 200
-      memory: 400
+      memory: 300
       replicas: 1
     variables:
       - name: KAFKA_TOPIC
