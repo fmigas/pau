@@ -29,3 +29,7 @@ test:
 
 request:
 	curl "http://0.0.0.0:80/?product_id=BTC%2FUSD"
+
+
+test:
+	poetry run pytest
