@@ -203,6 +203,9 @@ class PricePredictor:
         metadata = {
             "commit_hash": os.getenv("GITHUB_SHA"),
         }
+
+        logger.info(f"Metadata: {metadata}")
+
         # build the response object
         prediction = PricePrediction(
             price = predicted_price,
