@@ -1,3 +1,5 @@
+import os
+
 from pydantic import BaseModel
 import json
 import joblib
@@ -23,6 +25,8 @@ class PricePrediction(BaseModel):
     timestamp: str
     predicted_perc_change: float
     current_price: float
+
+    metadata: dict
 
     def to_json(self) -> str:
         return json.dumps(self.model_dump())
@@ -194,6 +198,14 @@ class PricePredictor:
         predicted_perc_change = \
             (predicted_price - features['close'].values[0]) / features['close'].values[0]
 
+
+        # add a field metadata with a commit hash
+        metadata = {
+            "commit_hash": os.getenv("GITHUB_SHA"),
+        }
+
+        logger.info(f"Metadata: {metadata}")
+
         # build the response object
         prediction = PricePrediction(
             price = predicted_price,
@@ -202,9 +214,12 @@ class PricePredictor:
             timestamp = timestamp_ms_to_human_readable_utc(predicted_timestamp_ms),
             predicted_perc_change = predicted_perc_change.round(6),
             current_price = features['close'].values[0],
+            metadata = metadata,
         )
 
         return prediction
+
+        logger.info("-----------------------------------------------------------------")
 
     def _load_model_from_registry(self) -> "Model":
         pass
@@ -221,3 +236,5 @@ if __name__ == "__main__":
     prediction = predictor.predict()
     logger.info(f"Prediction: {prediction.to_json()}")
     # logger.info(f"Prediction timestamp: {prediction.timestamp_ms_to_human_readable_utc()}")
+
+# dodatkowy komentarz

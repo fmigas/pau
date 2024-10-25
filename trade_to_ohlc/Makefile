@@ -31,3 +31,6 @@ run-dev:
 run-dev-historical:
 	cp historical.dev.env .env
 	poetry run python src/main.py
+
+test:
+	poetry run pytest

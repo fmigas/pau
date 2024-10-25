@@ -25,3 +25,9 @@ check-health-prod:
 # make a prediction request to our production API
 predict-request-prod:
 	curl -X GET https://price-predictor-824943a-fmigaszewski-pau-production.deployments.quix.io/predict?product_id=BTC%2FUSD
+
+check-health-dev:
+	curl -X GET https://price-predictor-824943a-fmigaszewski-pau-dev.deployments.quix.io/health
+
+predict-request-dev:
+	curl -X GET https://price-predictor-824943a-fmigaszewski-pau-dev.deployments.quix.io/predict?product_id=BTC%2FUSD

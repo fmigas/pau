@@ -91,6 +91,7 @@ class OhlcDataReader:
             last_n_minutes = last_n_minutes,
         )
         # logger.debug(f'Primary keys: {primary_keys}')
+        logger.info(f"Got {len(primary_keys)} primary keys to read from the feature store")
 
         feature_view = self._get_feature_view()
         features = feature_view.get_feature_vectors(
@@ -98,6 +99,7 @@ class OhlcDataReader:
             return_type = "pandas",
         )
 
+        logger.info(f"Read {features.shape[0]} feature vectors from the feature store")
         # features.sort_values(by='timestamp', inplace=True)
         features = features.sort_values(by = 'timestamp_ms').reset_index(drop = True)
 
