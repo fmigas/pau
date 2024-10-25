@@ -219,6 +219,8 @@ class PricePredictor:
 
         return prediction
 
+        logger.info("-----------------------------------------------------------------")
+
     def _load_model_from_registry(self) -> "Model":
         pass
 

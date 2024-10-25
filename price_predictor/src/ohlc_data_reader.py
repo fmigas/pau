@@ -98,6 +98,7 @@ class OhlcDataReader:
             return_type = "pandas",
         )
 
+        logger.info(f"Read {features.shape[0]} feature vectors from the feature store")
         # features.sort_values(by='timestamp', inplace=True)
         features = features.sort_values(by = 'timestamp_ms').reset_index(drop = True)
 
