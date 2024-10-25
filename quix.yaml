@@ -189,7 +189,7 @@ deployments:
         inputType: FreeText
         description: ''
         required: true
-        value: 35
+        value: 45
       - name: API_SUPPORTED_PRODUCT_IDS
         inputType: FreeText
         description: ''
