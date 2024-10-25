@@ -230,3 +230,5 @@ if __name__ == "__main__":
     prediction = predictor.predict()
     logger.info(f"Prediction: {prediction.to_json()}")
     # logger.info(f"Prediction timestamp: {prediction.timestamp_ms_to_human_readable_utc()}")
+
+# dodatkowy komentarz
