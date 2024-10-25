@@ -91,6 +91,7 @@ class OhlcDataReader:
             last_n_minutes = last_n_minutes,
         )
         # logger.debug(f'Primary keys: {primary_keys}')
+        logger.info(f"Got {len(primary_keys)} primary keys to read from the feature store")
 
         feature_view = self._get_feature_view()
         features = feature_view.get_feature_vectors(
