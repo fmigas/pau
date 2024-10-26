@@ -2,7 +2,14 @@
 <module type="PYTHON_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/price_predictor/.idea" />
       <excludeFolder url="file://$MODULE_DIR$/price_predictor/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/topic_to_feature_store/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/topic_to_feature_store/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/trade_producer/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/trade_producer/.venv" />
+      <excludeFolder url="file://$MODULE_DIR$/trade_to_ohlc/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/trade_to_ohlc/.venv" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.12 (price_predictor)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />

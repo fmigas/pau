@@ -5,3 +5,6 @@
 *.joblib
 */.env
 .env
+__pycache__/
+*.pyc
+*.iml
